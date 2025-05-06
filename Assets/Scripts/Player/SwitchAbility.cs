@@ -7,18 +7,18 @@ public class SwitchAbility : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0)) 
+        if (Input.GetKeyDown(KeyCode.Mouse1)) 
         {
             Debug.Log(isSwitched);
             if (isSwitched == true)
             {
-                isSwitched = false;
                 Switch();
+                isSwitched = false;
             }
             else 
             {
-                isSwitched = true;
                 Switch();
+                isSwitched = true;
             }   
         }
     }
@@ -35,11 +35,7 @@ public class SwitchAbility : MonoBehaviour
         }
         if (isSwitched == false)
         {
-            GameObject[] taggedObject = GameObject.FindGameObjectsWithTag(targetTag);
-            foreach (GameObject go in taggedObject)
-            {
-                go.SetActive(true);
-            }
+
         }
     }
 }
