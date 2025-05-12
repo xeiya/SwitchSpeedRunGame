@@ -1,41 +1,51 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SwitchAbility : MonoBehaviour
 {
-    public string targetTag = "Switchable";
-    private bool isSwitched = false;
+    public Rigidbody rb;
+    public GameObject playerObject;
+    public Transform targetObject;
+
+    bool isSwitched;
+
+    public void Start()
+    {
+        playerObject = GetComponent<GameObject>();
+        rb = GetComponent<Rigidbody>();
+    }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1)) 
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             Debug.Log(isSwitched);
-            if (isSwitched == true)
+            if (isSwitched)
             {
-                Switch();
-                isSwitched = false;
+                isSwitched = true;
+                isSwitching();
             }
             else 
-            {
-                Switch();
-                isSwitched = true;
-            }   
+            { 
+                isSwitched = false;
+                isSwitching();
+            }
         }
     }
 
-    public void Switch()
+    public void isSwitching() 
     {
-        if (isSwitched == true)
+        if (isSwitched)
         {
-            GameObject[] taggedObject = GameObject.FindGameObjectsWithTag(targetTag);
-            foreach (GameObject go in taggedObject)
-            {
-                go.SetActive(false);
-            }
+            playerObject.transform.position = targetObject.transform.position;
+            Physics.SyncTransforms();
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0.0001f, rb.linearVelocity.z);
         }
-        if (isSwitched == false)
+        else if (!isSwitched) 
         {
-
+            playerObject.transform.position = targetObject.transform.position;
+            Physics.SyncTransforms();
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0.0001f, rb.linearVelocity.z);
         }
     }
 }
