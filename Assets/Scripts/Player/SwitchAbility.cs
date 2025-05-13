@@ -3,49 +3,29 @@ using UnityEngine.UIElements;
 
 public class SwitchAbility : MonoBehaviour
 {
-    public Rigidbody rb;
-    public GameObject playerObject;
-    public Transform targetObject;
+    public GameObject overWorld;
+    public GameObject underWorld;
 
-    bool isSwitched;
-
-    public void Start()
+    private void Update()
     {
-        playerObject = GetComponent<GameObject>();
-        rb = GetComponent<Rigidbody>();
-    }
-
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1)) 
         {
-            Debug.Log(isSwitched);
-            if (isSwitched)
-            {
-                isSwitched = true;
-                isSwitching();
-            }
-            else 
-            { 
-                isSwitched = false;
-                isSwitching();
-            }
+            ChangeWorld1();
+            ChangeWorld2();
         }
     }
 
-    public void isSwitching() 
+    void ChangeWorld1() 
     {
-        if (isSwitched)
-        {
-            playerObject.transform.position = targetObject.transform.position;
-            Physics.SyncTransforms();
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0.0001f, rb.linearVelocity.z);
-        }
-        else if (!isSwitched) 
-        {
-            playerObject.transform.position = targetObject.transform.position;
-            Physics.SyncTransforms();
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0.0001f, rb.linearVelocity.z);
-        }
+        if (overWorld.activeInHierarchy == false)
+        { overWorld.SetActive(true); }
+        else { overWorld.SetActive(false); }
+    }
+
+    void ChangeWorld2()
+    {
+        if (underWorld.activeInHierarchy == false)
+        { underWorld.SetActive(true); }
+        else { underWorld.SetActive(false); }
     }
 }
