@@ -58,6 +58,16 @@ public class PlayerMovement : MonoBehaviour
     public bool sliding;
     public bool wallrunning;
 
+    private void Awake()
+    {
+        GameStateManager.Instance.OnGameStateChanged += OnGameStateChanged;
+    }
+
+    private void OnDestroy()
+    {
+        GameStateManager.Instance.OnGameStateChanged -= OnGameStateChanged;
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -262,5 +272,10 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 GetSlopeMoveDirection(Vector3 direction) 
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
+    }
+
+    private void OnGameStateChanged(GameState newGameState) 
+    { 
+        enabled = newGameState == GameState.Gameplay;
     }
 }

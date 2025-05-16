@@ -47,16 +47,17 @@ public class SwitchAbility : MonoBehaviour
 
         if (Time.time < lastTimeCasted + switchCooldown && switchReady == true) 
         {
+            
             if (overWorld.activeInHierarchy == false)
             { overWorld.SetActive(true); }
             else if (overWorld.activeInHierarchy == true)
             { overWorld.SetActive(false); }
-
+            
             if (underWorld.activeInHierarchy == false)
             { underWorld.SetActive(true); }
             else if (underWorld.activeInHierarchy == true)
             { underWorld.SetActive(false); }
-
+            
             switchReady = false;
         } 
     }
