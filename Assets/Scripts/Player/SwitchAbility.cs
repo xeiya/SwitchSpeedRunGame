@@ -22,7 +22,7 @@ public class SwitchAbility : MonoBehaviour
     }
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1) && switchReady == true) 
+        if (Input.GetKeyDown(KeyCode.Mouse1) && switchReady == true && GameStateManager.Instance.CurrentGameState == GameState.Gameplay)
         {
             ChangeWorld();
             SwitchBarEmpty();

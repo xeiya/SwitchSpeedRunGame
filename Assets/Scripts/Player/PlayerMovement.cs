@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float wallrunSpeed;
 
     private float desiredMoveSpeed;
-    private float lastDesiredMoveSpeed;
+    public float lastDesiredMoveSpeed;
 
     public float speedIncreaseMultiplier;
     public float slopeIncreaseMultiplier;
@@ -175,6 +175,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void MyInput() 
     {
+        if (GameStateManager.Instance.CurrentGameState == GameState.Paused) return;
+
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
@@ -190,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void MovePlayer() 
-    { 
+    {
         //calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
