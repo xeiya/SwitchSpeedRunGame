@@ -97,6 +97,17 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearDamping = 0;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else 
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = true;
+        }
     }
 
     public void StateHandler() 
@@ -176,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
     private void MyInput() 
     {
         if (GameStateManager.Instance.CurrentGameState == GameState.Paused) return;
-
+        
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
