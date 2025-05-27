@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         //ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.4f, whatIsGround);
 
         MyInput();
         SpeedControl();
@@ -96,6 +96,17 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rb.linearDamping = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else 
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = true;
         }
     }
 
@@ -176,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
     private void MyInput() 
     {
         if (GameStateManager.Instance.CurrentGameState == GameState.Paused) return;
-
+        
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 

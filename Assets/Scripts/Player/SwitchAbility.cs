@@ -6,6 +6,7 @@ public class SwitchAbility : MonoBehaviour
     [Header("Game Objects")]
     public GameObject overWorld;
     public GameObject underWorld;
+    private Rigidbody rb;
 
     [Header("Cooldown")]
     public float switchCooldown;
@@ -19,6 +20,7 @@ public class SwitchAbility : MonoBehaviour
     {
         switchReady = true;
         switchCooldownBar.fillAmount = 1;
+        rb = GetComponent<Rigidbody>();
     }
     public void Update()
     {
@@ -32,6 +34,11 @@ public class SwitchAbility : MonoBehaviour
         if (switchCooldownBar.fillAmount >= 1) 
         { 
             switchReady = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) || rb.transform.position.y < -20)
+        {
+            ResetWorld();
         }
     }
 
@@ -65,5 +72,13 @@ public class SwitchAbility : MonoBehaviour
     public void SwitchBarEmpty() 
     {
         switchCooldownBar.fillAmount = 0;
+    }
+
+    public void ResetWorld() 
+    {
+        if (overWorld.activeInHierarchy == false)
+        { overWorld.SetActive(true); }
+        if (underWorld.activeInHierarchy == true)
+        { underWorld.SetActive(false); }
     }
 }

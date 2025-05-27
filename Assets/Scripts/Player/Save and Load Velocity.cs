@@ -20,9 +20,7 @@ public class SaveandLoadVelocity : MonoBehaviour
         {
             if (GameStateManager.Instance.CurrentGameState == GameState.Paused)
             { SaveVelocity(); }
-
-            if (GameStateManager.Instance.CurrentGameState == GameState.Gameplay)
-            { LoadVelocity(); }
+            else { LoadVelocity(); }
         }
     }
 
@@ -38,6 +36,5 @@ public class SaveandLoadVelocity : MonoBehaviour
     {
         rb.linearVelocity = currentLinearVelo;
         rb.angularVelocity = currentAngularVelo;
-
     }
 }
