@@ -12,10 +12,17 @@ public class PlayerCam : MonoBehaviour
     float xRotation;
     float yRotation;
 
+    [SerializeField] Rigidbody rb;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        rb = GetComponent<Rigidbody>();
+
+        camHolder.rotation = Quaternion.Euler(yRotation, 0, 0);
+        orientation.rotation = Quaternion.Euler(xRotation, 45, yRotation);
     }
 
     private void Update()
@@ -35,6 +42,17 @@ public class PlayerCam : MonoBehaviour
         //rotate cam and orientation
         camHolder.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+
+        if (Input.GetKeyDown(KeyCode.R) || rb.linearVelocity.y < -20) 
+        { 
+            ResetCamera();
+        }
+    }
+
+    public void ResetCamera() 
+    {
+        camHolder.rotation = Quaternion.Euler(yRotation, 0, 0);
+        orientation.rotation = Quaternion.Euler(xRotation, 45, yRotation);
     }
 
     public void DoFov(float endValue) 
