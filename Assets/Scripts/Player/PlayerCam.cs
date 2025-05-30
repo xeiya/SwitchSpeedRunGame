@@ -16,19 +16,13 @@ public class PlayerCam : MonoBehaviour
 
     private void Start()
     {
+        ResetCamera();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-        rb = GetComponent<Rigidbody>();
-
-        camHolder.rotation = Quaternion.Euler(yRotation, 0, 0);
-        orientation.rotation = Quaternion.Euler(xRotation, 45, yRotation);
     }
 
     private void Update()
     {
-        if (GameStateManager.Instance.CurrentGameState == GameState.Paused) return;
-
         //get mouse input
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
@@ -52,7 +46,7 @@ public class PlayerCam : MonoBehaviour
     public void ResetCamera() 
     {
         camHolder.rotation = Quaternion.Euler(yRotation, 0, 0);
-        orientation.rotation = Quaternion.Euler(xRotation, 45, yRotation);
+        orientation.rotation = Quaternion.Euler(xRotation, 0, yRotation);
     }
 
     public void DoFov(float endValue) 

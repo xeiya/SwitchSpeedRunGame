@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class SwitchAbility : MonoBehaviour
 {
@@ -7,6 +9,10 @@ public class SwitchAbility : MonoBehaviour
     public GameObject overWorld;
     public GameObject underWorld;
     private Rigidbody rb;
+
+    [Header("Switch Effects")]
+    [SerializeField] private Volume volume;
+    private ColorAdjustments colorAdjustments;
 
     [Header("Cooldown")]
     public float switchCooldown;
@@ -16,15 +22,21 @@ public class SwitchAbility : MonoBehaviour
     [Header("Cooldown Image")]
     public Image switchCooldownBar;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+
+        volume.profile.TryGet(out colorAdjustments);
+    }
     private void Start()
     {
+        ResetWorld();
         switchReady = true;
         switchCooldownBar.fillAmount = 1;
-        rb = GetComponent<Rigidbody>();
     }
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1) && switchReady == true && GameStateManager.Instance.CurrentGameState == GameState.Gameplay)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && switchReady == true)
         {
             ChangeWorld();
             SwitchBarEmpty();
@@ -41,7 +53,7 @@ public class SwitchAbility : MonoBehaviour
             ResetWorld();
         }
     }
-
+    #region
     void ChangeWorld() 
     {
         /*Checks for the last time casted by the.
@@ -56,12 +68,18 @@ public class SwitchAbility : MonoBehaviour
         {
             
             if (overWorld.activeInHierarchy == false)
-            { overWorld.SetActive(true); }
+            { 
+                overWorld.SetActive(true);
+                colorAdjustments.hueShift.value = Mathf.MoveTowards(-20, 130, Time.time / 2f);
+            }
             else if (overWorld.activeInHierarchy == true)
             { overWorld.SetActive(false); }
             
             if (underWorld.activeInHierarchy == false)
-            { underWorld.SetActive(true); }
+            { 
+                underWorld.SetActive(true);
+                colorAdjustments.hueShift.value = Mathf.MoveTowards(130, -20, Time.time / 2f);
+            }
             else if (underWorld.activeInHierarchy == true)
             { underWorld.SetActive(false); }
             
@@ -76,9 +94,9 @@ public class SwitchAbility : MonoBehaviour
 
     public void ResetWorld() 
     {
-        if (overWorld.activeInHierarchy == false)
-        { overWorld.SetActive(true); }
-        if (underWorld.activeInHierarchy == true)
-        { underWorld.SetActive(false); }
+        overWorld.SetActive(true);
+        underWorld.SetActive(false);
+        colorAdjustments.hueShift.value = -20;
     }
+    #endregion 
 }

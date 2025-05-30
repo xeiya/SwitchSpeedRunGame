@@ -159,6 +159,7 @@ MonoBehaviour:
   runSpeed: 20
   slideSpeed: 30
   wallrunSpeed: 10
+  lastDesiredMoveSpeed: 0
   speedIncreaseMultiplier: 1.5
   slopeIncreaseMultiplier: 2.5
   groundDrag: 5
@@ -529,7 +530,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -566,3 +567,4 @@ MonoBehaviour:
   sensY: 1000
   orientation: {fileID: 4569086010873461375}
   camHolder: {fileID: 2080077006989538153}
+  rb: {fileID: 0}

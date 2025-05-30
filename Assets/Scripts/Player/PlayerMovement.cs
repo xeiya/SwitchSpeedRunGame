@@ -57,17 +57,6 @@ public class PlayerMovement : MonoBehaviour
 
     public bool sliding;
     public bool wallrunning;
-
-    private void Awake()
-    {
-        GameStateManager.Instance.OnGameStateChanged += OnGameStateChanged;
-    }
-
-    private void OnDestroy()
-    {
-        GameStateManager.Instance.OnGameStateChanged -= OnGameStateChanged;
-    }
-
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -100,13 +89,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else 
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = true;
+            GameManager.gm.TogglePause();
         }
     }
 
@@ -185,9 +168,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void MyInput() 
-    {
-        if (GameStateManager.Instance.CurrentGameState == GameState.Paused) return;
-        
+    {        
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
@@ -285,10 +266,5 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 GetSlopeMoveDirection(Vector3 direction) 
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
-    }
-
-    private void OnGameStateChanged(GameState newGameState) 
-    { 
-        enabled = newGameState == GameState.Gameplay;
     }
 }

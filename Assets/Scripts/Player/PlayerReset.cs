@@ -21,6 +21,7 @@ public class PlayerReset : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) || rb.transform.position.y < -20) 
         { 
             ResetPlayer();
+            GameManager.gm.ResetTime();
         }
     }
 
