@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class CollectItems : MonoBehaviour
+public class CollectSouls : MonoBehaviour
 {
-    public int collectedItems;
-    public int requiredItems;
+    public int collectedSouls;
+    public int requiredSouls;
 
     public string collectableTag = "PickUp";
 
@@ -11,7 +11,7 @@ public class CollectItems : MonoBehaviour
     {
         if (other.gameObject.tag == collectableTag)
         {
-            collectedItems++;
+            collectedSouls++;
             Destroy(other.gameObject);
         }
     }
