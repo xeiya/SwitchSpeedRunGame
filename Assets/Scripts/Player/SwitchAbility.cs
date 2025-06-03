@@ -53,7 +53,7 @@ public class SwitchAbility : MonoBehaviour
             ResetWorld();
         }
     }
-    #region
+    #region World Change
     void ChangeWorld() 
     {
         /*Checks for the last time casted by the.
@@ -70,7 +70,7 @@ public class SwitchAbility : MonoBehaviour
             if (overWorld.activeInHierarchy == false)
             { 
                 overWorld.SetActive(true);
-                colorAdjustments.hueShift.value = Mathf.MoveTowards(-20, 130, Time.time / 2f);
+                colorAdjustments.hueShift.value = 0;
             }
             else if (overWorld.activeInHierarchy == true)
             { overWorld.SetActive(false); }
@@ -78,7 +78,7 @@ public class SwitchAbility : MonoBehaviour
             if (underWorld.activeInHierarchy == false)
             { 
                 underWorld.SetActive(true);
-                colorAdjustments.hueShift.value = Mathf.MoveTowards(130, -20, Time.time / 2f);
+                colorAdjustments.hueShift.value = 130;
             }
             else if (underWorld.activeInHierarchy == true)
             { underWorld.SetActive(false); }
