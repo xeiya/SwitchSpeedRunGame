@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private bool isPaused;
     public GameObject pauseMenu;
     public GameObject playerUI;
-    
+
     [Header("Timer")]
     public float elapsedTime;
     public TMP_Text timerText;

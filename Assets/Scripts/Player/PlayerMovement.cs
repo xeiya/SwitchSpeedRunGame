@@ -37,6 +37,9 @@ public class PlayerMovement : MonoBehaviour
     private RaycastHit slopeHit;
     private bool exitingSlope;
 
+    [Header("Death")]
+    public DeathManager deathManager;
+
     public Transform orientation;
 
     float horizontalInput;
@@ -90,6 +93,13 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             GameManager.gm.TogglePause();
+        }
+
+        if (rb.transform.position.y < -20) 
+        { 
+            deathManager.ToggleDeath();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
