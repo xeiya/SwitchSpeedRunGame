@@ -1,15 +1,11 @@
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using NUnit.Framework;
 using System.Collections.Generic;
-using UnityEditor;
+using TMPro;
+using UnityEngine;
 
-public class DeathManager : MonoBehaviour
+public class FinishManager : MonoBehaviour
 {
-    public GameObject deathMenu;
     public List<string> Messages = new List<string>();
-    public TMP_Text deathText;
+    public TMP_Text winText;
 
     private void Start()
     {
@@ -25,15 +21,8 @@ public class DeathManager : MonoBehaviour
         Invoke("ChangeText", 1f);
     }
 
-    public void ChangeText() 
+    public void ChangeText()
     {
-        deathText.text = Messages[Random.Range(0, Messages.Count)];
-    }
-
-    public void ToggleDeath()
-    {
-        deathMenu.SetActive(true);
-
-        Time.timeScale = 0f;
+        winText.text = Messages[Random.Range(0, Messages.Count)];
     }
 }
