@@ -10,7 +10,7 @@ public class CollectSouls : MonoBehaviour
 
     void Update()
     {
-        if (collectedSouls >= requiredSouls) 
+        if (collectedSouls == requiredSouls) 
         { 
             endBarrier.DestroyGate();
         }

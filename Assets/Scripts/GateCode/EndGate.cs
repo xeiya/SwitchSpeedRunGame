@@ -9,14 +9,15 @@ public class EndGate : MonoBehaviour
     {
         if (other.CompareTag("Player")) 
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            playerUI.SetActive(false);
+            EndMenu();
         }
     }
 
     public void EndMenu() 
-    { 
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        playerUI.SetActive(false);
         endMenu.SetActive(true);
         Time.timeScale = 0f;
     }

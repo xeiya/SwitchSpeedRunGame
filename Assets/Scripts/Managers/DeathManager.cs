@@ -13,6 +13,9 @@ public class DeathManager : MonoBehaviour
 
     private void Start()
     {
+        Messages.Add("You fell so hard, even Atlas felt that impact!");
+        Messages.Add("You’ve died so many times, Hades is charging rent.");
+        Messages.Add("You’ve turned divine potential into a cautionary tale.");
         Messages.Add("You died so fast, I thought you were speedrunning the afterlife.");
         Messages.Add("You fell so fast, even Hermes couldn't keep up—what an embarrassment to your bloodline!");
         Messages.Add("By the gods, I actually killed you? I was bracing for a fight, not a tragic comedy.");
