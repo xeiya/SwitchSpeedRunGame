@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerReset : MonoBehaviour
 {
@@ -6,6 +7,11 @@ public class PlayerReset : MonoBehaviour
     private Vector3 spawnPos;
     private Quaternion spawnRot;
 
+    [Header("UI")]
+    [SerializeField]private GameObject playerUI;
+    [SerializeField] private GameObject finishUI;
+    [SerializeField] private GameObject deathUI;
+    [SerializeField] private GameObject pauseUI;
     private void Awake()
     {
         spawnPos = transform.position;
@@ -20,15 +26,23 @@ public class PlayerReset : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R)) 
         { 
-            ResetPlayer();
             GameManager.gm.ResetTime();
+            EnablePlayerUI();
+            ResetPlayer();
         }
     }
 
     private void ResetPlayer() 
     {
-        rb.linearVelocity = Vector3.zero;
-        transform.position = spawnPos;
-        transform.rotation = spawnRot;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1.0f;
+    }
+
+    private void EnablePlayerUI() 
+    {
+        playerUI.SetActive(true);
+        deathUI.SetActive(false);
+        pauseUI.SetActive(false);
+        finishUI.SetActive(false);
     }
 }
