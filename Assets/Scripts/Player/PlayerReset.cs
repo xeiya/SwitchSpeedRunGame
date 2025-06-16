@@ -8,7 +8,7 @@ public class PlayerReset : MonoBehaviour
     private Quaternion spawnRot;
 
     [Header("UI")]
-    [SerializeField]private GameObject playerUI;
+    [SerializeField] private GameObject playerUI;
     [SerializeField] private GameObject finishUI;
     [SerializeField] private GameObject deathUI;
     [SerializeField] private GameObject pauseUI;

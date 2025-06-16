@@ -10,5 +10,8 @@ public class LoadSceneByIndex : MonoBehaviour
 
         //Load the scene with the given build index
         SceneManager.LoadScene(buildIndex);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

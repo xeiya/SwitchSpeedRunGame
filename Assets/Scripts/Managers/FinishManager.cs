@@ -9,15 +9,16 @@ public class FinishManager : MonoBehaviour
 
     private void Start()
     {
-        Messages.Add("You fell so hard, even Atlas felt that impact!");
-        Messages.Add("You’ve died so many times, Hades is charging rent.");
-        Messages.Add("You’ve turned divine potential into a cautionary tale.");
-        Messages.Add("You died so fast, I thought you were speedrunning the afterlife.");
-        Messages.Add("You fell so fast, even Hermes couldn't keep up—what an embarrassment to your bloodline!");
-        Messages.Add("By the gods, I actually killed you? I was bracing for a fight, not a tragic comedy.");
-        Messages.Add("I thought I was the king of terrible descents—but you just dethroned me!");
-        Messages.Add("You’ve made dying your most consistent skill.");
-        Messages.Add("You’ve wasted my time, my patience, and somehow—my immortality. Impressive.");
+        Messages.Add("Speed, wit, and good cheekbones? Truly, the divine genes are thriving.");
+        Messages.Add("Mortals dream of wings. You just used yours to fly past fate itself.");
+        Messages.Add("You didn’t just win—you outplayed, outpaced, and out-sassed the competition. Frankly? Iconic.");
+        Messages.Add("If speed were illegal, you’d be serving a life sentence in Tartarus by now.");
+        Messages.Add("That win was so fast even I missed it—and I see everything.");
+        Messages.Add("You’re not just part of Hermes’ bloodline—you’re the upgrade.");
+        Messages.Add("Mortals ran. You vanished. There's a difference—and it's dazzling.");
+        Messages.Add("With style like that, Olympus might need a new runway. Preferably one that doesn't catch fire.");
+        Messages.Add("You make outrunning fate look like a warm-up lap. Apollo’s harp just went off-key.");
+        Messages.Add("Victory looks easy when you turn time itself into a footnote.");
         Invoke("ChangeText", 1f);
     }
 
