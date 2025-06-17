@@ -9384,7 +9384,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Jump and grab the wall to wallrun
+  m_text: Jump to the wall to wallrun
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f308e4bde45e4c040b470e1eb08376e2, type: 2}
   m_sharedMaterial: {fileID: 293056563243383083, guid: f308e4bde45e4c040b470e1eb08376e2, type: 2}
@@ -17082,7 +17082,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742148457}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -13}
+  m_LocalPosition: {x: 0, y: 0, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23374,6 +23374,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 798273703946592956, guid: 4a6102f25127022468aa005c72f412c0, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288060391095548658, guid: 4a6102f25127022468aa005c72f412c0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.43360415
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288060391095548658, guid: 4a6102f25127022468aa005c72f412c0, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.8605779
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288060391095548658, guid: 4a6102f25127022468aa005c72f412c0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1662.2236
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288060391095548658, guid: 4a6102f25127022468aa005c72f412c0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -297.9748
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288060391095548658, guid: 4a6102f25127022468aa005c72f412c0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 830.22363
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288060391095548658, guid: 4a6102f25127022468aa005c72f412c0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -148.97482
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142345363048282216, guid: 4a6102f25127022468aa005c72f412c0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -804.1917
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142345363048282216, guid: 4a6102f25127022468aa005c72f412c0, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
